@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="MainProcess.cpp">
+      <Filter>frame\source</Filter>
+    </ClCompile>
+    <ClCompile Include="RunningControl.cpp">
+      <Filter>frame\source</Filter>
+    </ClCompile>
+    <ClCompile Include="IniFileReader.cpp">
+      <Filter>frame\source</Filter>
+    </ClCompile>
+    <ClCompile Include="WriteLog.cpp">
+      <Filter>frame\source</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionManager.cpp">
+      <Filter>bussiness\source</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpListenerManager.cpp">
+      <Filter>bussiness\source</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManager.cpp">
+      <Filter>frame\source</Filter>
+    </ClCompile>
+    <ClCompile Include="MsgQManager.cpp">
+      <Filter>frame\source</Filter>
+    </ClCompile>
+    <ClCompile Include="CommServerMain.cpp" />
+    <ClCompile Include="MonitorManager.cpp">
+      <Filter>bussiness\source</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionBase.cpp">
+      <Filter>bussiness\source</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpSvrConnection.cpp">
+      <Filter>bussiness\source</Filter>
+    </ClCompile>
+    <ClCompile Include="MonitorConnection.cpp">
+      <Filter>bussiness\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="bussiness">
+      <UniqueIdentifier>{96b2cebe-f70b-4a1e-89c2-65e52c9a3ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bussiness\head">
+      <UniqueIdentifier>{85185e24-a251-4b79-843e-d45cba5524df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bussiness\source">
+      <UniqueIdentifier>{5075c747-7c1c-430d-b34b-9d9335261b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="frame">
+      <UniqueIdentifier>{d7426afc-6dbb-42cf-afab-860a33924f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="frame\head">
+      <UniqueIdentifier>{28991cff-5f3d-4fa8-be65-16b7c5144b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="frame\source">
+      <UniqueIdentifier>{47189d51-03c6-4b8d-940b-f960f9ae52ff}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainProcess.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSingleton.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="RunningControl.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFileReader.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorList.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigManager.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteLog.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionManager.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpListenerManager.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgQManager.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
+    <ClInclude Include="MonitorManager.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionBase.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpSvrConnection.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+    <ClInclude Include="MonitorConnection.h">
+      <Filter>bussiness\head</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
