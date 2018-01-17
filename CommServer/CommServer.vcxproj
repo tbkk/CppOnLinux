@@ -93,6 +93,7 @@
     <ClInclude Include="RunningControl.h" />
     <ClInclude Include="TcpListenerManager.h" />
     <ClInclude Include="TcpSvrConnection.h" />
+    <ClInclude Include="TinyLocker.h" />
     <ClInclude Include="WriteLog.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

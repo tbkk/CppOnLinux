@@ -105,5 +105,8 @@
     <ClInclude Include="MonitorConnection.h">
       <Filter>bussiness\head</Filter>
     </ClInclude>
+    <ClInclude Include="TinyLocker.h">
+      <Filter>frame\head</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
