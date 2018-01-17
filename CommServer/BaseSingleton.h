@@ -12,7 +12,7 @@ public:
 		}
 		return m_singleton->m_instance;
 	}
-	static void SetInstance(TYPE* p) {
+	static void setInstance(TYPE* p) {
 		if (m_singleton == NULL) {
 			m_singleton = new CBaseSingleton(p);
 		}

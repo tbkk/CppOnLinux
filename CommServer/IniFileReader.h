@@ -34,33 +34,33 @@ public:
 	typedef std::map<std::string, std::string> CName2Value;
 	typedef std::map<std::string, CName2Value> CSession2NameValue;
 
-	svr_err_t LoadConf(const char * conf_file);
+	svr_err_t loadConf(const char * conf_file);
 
-	svr_err_t GetConfChar(std::string section, std::string name, char& value);
-	svr_err_t GetConfChar(std::string section, std::string name, char& value, char defaultvalue);
-	svr_err_t GetConfUchar(std::string section, std::string name, unsigned char& value);
-	svr_err_t GetConfUchar(std::string section, std::string name, unsigned char& value, unsigned char defaultvalue);
-	svr_err_t GetConfShort(std::string section, std::string name, short& value);
-	svr_err_t GetConfShort(std::string section, std::string name, short& value, short defaultvalue);
-	svr_err_t GetConfUshort(std::string section, std::string name, unsigned short& value);
-	svr_err_t GetConfUshort(std::string section, std::string name, unsigned short& value, unsigned short defaultvalue);
-	svr_err_t GetConfInt(std::string section, std::string name, int& value);
-	svr_err_t GetConfInt(std::string section, std::string name, int& value, int defaultvalue);
-	svr_err_t GetConfUint(std::string section, std::string name, unsigned int& value);
-	svr_err_t GetConfUint(std::string section, std::string name, unsigned int& value, unsigned int defaultvalue);
-	svr_err_t GetConfLong(std::string section, std::string name, long& value);
-	svr_err_t GetConfLong(std::string section, std::string name, long& value, long defaultvalue);
-	svr_err_t GetConfUlong(std::string section, std::string name, unsigned long& value);
-	svr_err_t GetConfUlong(std::string section, std::string name, unsigned long& value, unsigned long defaultvalue);
-	svr_err_t GetConfStr(std::string section, std::string name, char* value, size_t buf_len);
-	svr_err_t GetConfStr(std::string section, std::string name, char* value, size_t buf_len, const char* defaultvalue);
-	svr_err_t GetConfStr(std::string section, std::string name, std::string& value);
-	svr_err_t GetConfStr(std::string section, std::string name, std::string& value, const std::string& defaultvalue);
+	svr_err_t getConfChar(std::string section, std::string name, char& value);
+	svr_err_t getConfChar(std::string section, std::string name, char& value, char defaultvalue);
+	svr_err_t getConfUchar(std::string section, std::string name, unsigned char& value);
+	svr_err_t getConfUchar(std::string section, std::string name, unsigned char& value, unsigned char defaultvalue);
+	svr_err_t getConfShort(std::string section, std::string name, short& value);
+	svr_err_t getConfShort(std::string section, std::string name, short& value, short defaultvalue);
+	svr_err_t getConfUshort(std::string section, std::string name, unsigned short& value);
+	svr_err_t getConfUshort(std::string section, std::string name, unsigned short& value, unsigned short defaultvalue);
+	svr_err_t getConfInt(std::string section, std::string name, int& value);
+	svr_err_t getConfInt(std::string section, std::string name, int& value, int defaultvalue);
+	svr_err_t getConfUint(std::string section, std::string name, unsigned int& value);
+	svr_err_t getConfUint(std::string section, std::string name, unsigned int& value, unsigned int defaultvalue);
+	svr_err_t getConfLong(std::string section, std::string name, long& value);
+	svr_err_t getConfLong(std::string section, std::string name, long& value, long defaultvalue);
+	svr_err_t getConfUlong(std::string section, std::string name, unsigned long& value);
+	svr_err_t getConfUlong(std::string section, std::string name, unsigned long& value, unsigned long defaultvalue);
+	svr_err_t getConfStr(std::string section, std::string name, char* value, size_t buf_len);
+	svr_err_t getConfStr(std::string section, std::string name, char* value, size_t buf_len, const char* defaultvalue);
+	svr_err_t getConfStr(std::string section, std::string name, std::string& value);
+	svr_err_t getConfStr(std::string section, std::string name, std::string& value, const std::string& defaultvalue);
 
 protected:
-	svr_err_t ParseOneLine(std::string& line);
-	void trim_string(std::string& line);   //清除std::string前后的空白
-	void trim_quote(std::string& line);  //清除std::string前后的引号
+	svr_err_t parseOneLine(std::string& line);
+	void trimString(std::string& line);   //清除std::string前后的空白
+	void trimQuote(std::string& line);  //清除std::string前后的引号
 
 	CSession2NameValue m_oSession2NameValue;
 	std::string m_strCurSection;	

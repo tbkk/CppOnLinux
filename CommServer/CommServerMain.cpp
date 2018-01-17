@@ -75,15 +75,15 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
-	CRunningControl::getInstance().InitSignal();
-	CRunningControl::getInstance().Start();
+	CRunningControl::getInstance().initSignal();
+	CRunningControl::getInstance().start();
 
 	oMainProcess.run();
 	LOG_WARN("Warning log test!");
 	LOG_ERROR("ERROR log test!");
 //	oMainControl.exit();
 
-	CRunningControl::getInstance().Stop();
+	CRunningControl::getInstance().stop();
 	LOG_EDN;
 	return 0;
 }

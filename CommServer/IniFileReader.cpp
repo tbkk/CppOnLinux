@@ -14,7 +14,7 @@ CIniFileReader::~CIniFileReader()
 {
 }
 
-int CIniFileReader::LoadConf(const char * conf_file)
+int CIniFileReader::loadConf(const char * conf_file)
 {
 	m_strCurSection = "";
 	
@@ -43,7 +43,7 @@ int CIniFileReader::LoadConf(const char * conf_file)
 		
 		//解析一行配置
 		svr_err_t nRet;
-		if ((nRet = ParseOneLine(subbuf)) != ERR_INIFILE_SUCCESS) 
+		if ((nRet = parseOneLine(subbuf)) != ERR_INIFILE_SUCCESS) 
 		{
 			return line_count;
 		}
@@ -51,7 +51,7 @@ int CIniFileReader::LoadConf(const char * conf_file)
 	return ERR_INIFILE_SUCCESS;
 }
 
-void CIniFileReader::trim_string(string& line)
+void CIniFileReader::trimString(string& line)
 {
 	size_t first= line.find_first_not_of(" \t\r\n");
 	size_t last = line.find_last_not_of(" \t\r\n");
@@ -64,7 +64,7 @@ void CIniFileReader::trim_string(string& line)
 	}
 }
 
-void CIniFileReader::trim_quote(string& line)
+void CIniFileReader::trimQuote(string& line)
 {
 	size_t first= line.find_first_not_of("'\"");
 	size_t last = line.find_last_not_of("'\"");
@@ -76,11 +76,11 @@ void CIniFileReader::trim_quote(string& line)
 	}
 }
 
-svr_err_t CIniFileReader::ParseOneLine(string& line)
+svr_err_t CIniFileReader::parseOneLine(string& line)
 {
 	size_t first = 0, last = 0;
 
-	trim_string(line);
+	trimString(line);
 	if (line.empty()) {
 		return ERR_INIFILE_SUCCESS;
 	}  
@@ -118,9 +118,9 @@ svr_err_t CIniFileReader::ParseOneLine(string& line)
 	string name = line.substr(0,first);
 	string value = line.substr(first+1, string::npos);
 
-	trim_string(name);
-	trim_string(value);
-	trim_quote(value);
+	trimString(name);
+	trimString(value);
+	trimQuote(value);
 	
 	if (name.empty()) {
 		//name为空
@@ -132,22 +132,22 @@ svr_err_t CIniFileReader::ParseOneLine(string& line)
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfChar(string section, string name, char& value)
+svr_err_t CIniFileReader::getConfChar(string section, string name, char& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = (char)strtol(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfChar(string section, string name, char& value, char defaultvalue)
+svr_err_t CIniFileReader::getConfChar(string section, string name, char& value, char defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -156,22 +156,22 @@ svr_err_t CIniFileReader::GetConfChar(string section, string name, char& value, 
 }
 
 
-svr_err_t CIniFileReader::GetConfUchar(string section, string name, unsigned char& value)
+svr_err_t CIniFileReader::getConfUchar(string section, string name, unsigned char& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = (char)strtoul(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUchar(string section, string name, unsigned char& value, unsigned char defaultvalue)
+svr_err_t CIniFileReader::getConfUchar(string section, string name, unsigned char& value, unsigned char defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -180,22 +180,22 @@ svr_err_t CIniFileReader::GetConfUchar(string section, string name, unsigned cha
 }
 
 
-svr_err_t CIniFileReader::GetConfShort(string section, string name, short& value)
+svr_err_t CIniFileReader::getConfShort(string section, string name, short& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = (short)strtol(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfShort(string section, string name, short& value, short defaultvalue)
+svr_err_t CIniFileReader::getConfShort(string section, string name, short& value, short defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -203,22 +203,22 @@ svr_err_t CIniFileReader::GetConfShort(string section, string name, short& value
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUshort(string section, string name, unsigned short& value)
+svr_err_t CIniFileReader::getConfUshort(string section, string name, unsigned short& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = (unsigned short)strtoul(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUshort(string section, string name, unsigned short& value, unsigned short defaultvalue)
+svr_err_t CIniFileReader::getConfUshort(string section, string name, unsigned short& value, unsigned short defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -226,22 +226,22 @@ svr_err_t CIniFileReader::GetConfUshort(string section, string name, unsigned sh
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfInt(string section, string name, int& value)
+svr_err_t CIniFileReader::getConfInt(string section, string name, int& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = strtol(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfInt(string section, string name, int& value, int defaultvalue)
+svr_err_t CIniFileReader::getConfInt(string section, string name, int& value, int defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -249,22 +249,22 @@ svr_err_t CIniFileReader::GetConfInt(string section, string name, int& value, in
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUint(string section, string name, unsigned int& value)
+svr_err_t CIniFileReader::getConfUint(string section, string name, unsigned int& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = strtoul(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUint(string section, string name, unsigned int& value, unsigned int defaultvalue)
+svr_err_t CIniFileReader::getConfUint(string section, string name, unsigned int& value, unsigned int defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -272,22 +272,22 @@ svr_err_t CIniFileReader::GetConfUint(string section, string name, unsigned int&
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfLong(string section, string name, long& value)
+svr_err_t CIniFileReader::getConfLong(string section, string name, long& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = strtol(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfLong(string section, string name, long& value, long defaultvalue)
+svr_err_t CIniFileReader::getConfLong(string section, string name, long& value, long defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -295,22 +295,22 @@ svr_err_t CIniFileReader::GetConfLong(string section, string name, long& value, 
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUlong(string section, string name, unsigned long& value)
+svr_err_t CIniFileReader::getConfUlong(string section, string name, unsigned long& value)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	value = strtoul(str_value.c_str(), NULL, 0);
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfUlong(string section, string name, unsigned long& value, unsigned long defaultvalue)
+svr_err_t CIniFileReader::getConfUlong(string section, string name, unsigned long& value, unsigned long defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		value = defaultvalue;
 		return ERR_INIFILE_USEDEFAULTVALUE;
 	}
@@ -318,7 +318,7 @@ svr_err_t CIniFileReader::GetConfUlong(string section, string name, unsigned lon
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfStr(string section, string name, string& value)
+svr_err_t CIniFileReader::getConfStr(string section, string name, string& value)
 {
 	CSession2NameValue::iterator map_pos = m_oSession2NameValue.find(section);
 	if (map_pos == m_oSession2NameValue.end()) {
@@ -332,7 +332,7 @@ svr_err_t CIniFileReader::GetConfStr(string section, string name, string& value)
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfStr(string section, string name, string& value, const string& defaultvalue)
+svr_err_t CIniFileReader::getConfStr(string section, string name, string& value, const string& defaultvalue)
 {
 	CSession2NameValue::iterator map_pos = m_oSession2NameValue.find(section);
 	if (map_pos == m_oSession2NameValue.end()) {
@@ -348,11 +348,11 @@ svr_err_t CIniFileReader::GetConfStr(string section, string name, string& value,
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfStr(string section, string name, char* value, size_t buf_len)
+svr_err_t CIniFileReader::getConfStr(string section, string name, char* value, size_t buf_len)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		return nRet;
 	}
 	
@@ -366,11 +366,11 @@ svr_err_t CIniFileReader::GetConfStr(string section, string name, char* value, s
 	return ERR_INIFILE_SUCCESS;
 }
 
-svr_err_t CIniFileReader::GetConfStr(string section, string name, char* value, size_t buf_len, const char* defaultvalue)
+svr_err_t CIniFileReader::getConfStr(string section, string name, char* value, size_t buf_len, const char* defaultvalue)
 {
 	string str_value;
 	svr_err_t nRet;
-	if ((nRet = GetConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
+	if ((nRet = getConfStr(section, name, str_value)) != ERR_INIFILE_SUCCESS) {
 		size_t len = strlen(defaultvalue);
 		if (buf_len < len + 1) {
 			return ERR_INIFILE_INVAL;

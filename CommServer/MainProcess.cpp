@@ -29,7 +29,7 @@ void CMainProcess::run()
 
 	//m_oTcpListenerManager.startListen("127.0.0.1", 6000);
 	m_oTcpListenerManager.startMultiListen();
-	while (CRunningControl::getInstance().IsRunning())
+	while (CRunningControl::getInstance().isRunning())
 	{
 		m_oConnectionManager.addNewConnections(m_oTcpListenerManager.getNewConnections());
 		m_oConnectionManager.tryNetMsg2QMsg();

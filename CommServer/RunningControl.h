@@ -12,23 +12,23 @@ public:
 		return oRunningControl;
 	};
 
-	void InitSignal();
+	void initSignal();
 
-	void Start();
-	void SetRunning(bool bRunning);
-	void SetReload(bool bReload);
-	void Stop();
+	void start();
+	void setRunning(bool bRunning);
+	void setReload(bool bReload);
+	void stop();
 
-	bool IsRunning();
-	bool IsReload();
+	bool isRunning();
+	bool isReload();
 
-	void SetStopSignNo(int nStopSignNo);
-	int  GetStopSignNo();
+	void setStopSignNo(int nStopSignNo);
+	int  getStopSignNo();
 
 protected:
 
-	static void sigusr1_handle(int iSigVal);
-	static void sigusr2_handle(int iSigVal);
+	static void sigusr1Handle(int iSigVal);
+	static void sigusr2Handle(int iSigVal);
 
 };
 

@@ -10,7 +10,7 @@ std::string CConfigManager::getLogConfigFilePath()
 	string strSection = "LOG";
 	string strKey = "conf";
 	string value = "";
-	svr_err_t ret = m_oIniFileReader.GetConfStr(strSection.c_str(), strKey.c_str(), value);
+	svr_err_t ret = m_oIniFileReader.getConfStr(strSection.c_str(), strKey.c_str(), value);
 	if (ret != ERR_SUCCESS)
 	{
 		fprintf(stderr, "Config Error! file=[%s], section=[%s], key=[%s]\n", strSection.c_str(), strKey.c_str());
@@ -23,7 +23,7 @@ std::list<int> CConfigManager::getListenPortList()
 {
 	list<int> lPortList;
 	unsigned int nPortCount = 0;
-	svr_err_t ret = m_oIniFileReader.GetConfUint("COMMSVR", "listenPortCount", nPortCount);
+	svr_err_t ret = m_oIniFileReader.getConfUint("COMMSVR", "listenPortCount", nPortCount);
 	if (ret != ERR_SUCCESS)
 	{
 		LOG_ERROR("getListenPortListCount COMMSVR--listenPortCount error!");
@@ -34,7 +34,7 @@ std::list<int> CConfigManager::getListenPortList()
 		char szPortKey[10] = { 0 };
 		snprintf(szPortKey, sizeof(szPortKey), "port_%d", i);
 		unsigned int nPort = 0;
-		svr_err_t ret = m_oIniFileReader.GetConfUint("COMMSVR", szPortKey, nPort);
+		svr_err_t ret = m_oIniFileReader.getConfUint("COMMSVR", szPortKey, nPort);
 		if (ret != ERR_SUCCESS)
 		{
 			LOG_ERROR("getListenPortList COMMSVR--%s error!", szPortKey);
@@ -53,7 +53,7 @@ std::string CConfigManager::getQKeyFilePath()
 	string strSection = "IPCQ";
 	string strKey = "keyFilePath";
 	string value = "";
-	svr_err_t ret = m_oIniFileReader.GetConfStr(strSection.c_str(), strKey.c_str(), value);
+	svr_err_t ret = m_oIniFileReader.getConfStr(strSection.c_str(), strKey.c_str(), value);
 	if (ret != ERR_SUCCESS)
 	{
 		LOG_ERROR("Config Error! file=[%s], section=[%s], key=[%s]\n", strSection.c_str(), strKey.c_str());
@@ -67,7 +67,7 @@ int CConfigManager::getSendQId()
 	string strSection = "IPCQ";
 	string strKey = "sendQId";
 	int value = 0;
-	svr_err_t ret = m_oIniFileReader.GetConfInt(strSection.c_str(), strKey.c_str(), value);
+	svr_err_t ret = m_oIniFileReader.getConfInt(strSection.c_str(), strKey.c_str(), value);
 	if (ret != ERR_SUCCESS)
 	{
 		LOG_ERROR("Config Error! file=[%s], section=[%s], key=[%s]\n", strSection.c_str(), strKey.c_str());
@@ -81,7 +81,7 @@ int CConfigManager::getRecvQId()
 	string strSection = "IPCQ";
 	string strKey = "recvQId";
 	int value = 0;
-	svr_err_t ret = m_oIniFileReader.GetConfInt(strSection.c_str(), strKey.c_str(), value);
+	svr_err_t ret = m_oIniFileReader.getConfInt(strSection.c_str(), strKey.c_str(), value);
 	if (ret != ERR_SUCCESS)
 	{
 		LOG_ERROR("Config Error! file=[%s], section=[%s], key=[%s]\n", strSection.c_str(), strKey.c_str());
@@ -95,7 +95,7 @@ int CConfigManager::getMonitorPort()
 	string strSection = "MONITOR";
 	string strKey = "monitorPort";
 	int value = 0;
-	svr_err_t ret = m_oIniFileReader.GetConfInt(strSection.c_str(), strKey.c_str(), value);
+	svr_err_t ret = m_oIniFileReader.getConfInt(strSection.c_str(), strKey.c_str(), value);
 	if (ret != ERR_SUCCESS)
 	{
 		LOG_ERROR("Config Error! file=[%s], section=[%s], key=[%s]\n", strSection.c_str(), strKey.c_str());
@@ -112,7 +112,7 @@ bool CConfigManager::initialize(const std::string& strConfigFilePath)
 		return false;
 	}
 
-	if (m_oIniFileReader.LoadConf(strConfigFilePath.c_str()) != ERR_INIFILE_SUCCESS)
+	if (m_oIniFileReader.loadConf(strConfigFilePath.c_str()) != ERR_INIFILE_SUCCESS)
 	{
 		return false;
 	}
